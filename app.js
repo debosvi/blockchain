@@ -5,10 +5,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var flash = require('connect-flash');
+var session = require('express-session');
 
 var routes = require('./routes/index');
 
 var app = express();
+
+var configDB = require('./config/database.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +26,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(i18n.init);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash()); // use connect-flash for flash messages stored in session
+
+app.use(session({
+    secret: 'iloveblockchaindebosvi', // session secret
+    resave: true,
+    saveUninitialized: true
+}));
+
+// mongoose
+mongoose.connect(configDB.url);
 
 app.use('/', routes);
 
@@ -56,7 +71,7 @@ app.use(function(err, req, res, next) {
 });
 
 i18n.configure({
-  locales:['en', 'ja', 'pt', 'es', 'pl', 'zh-CN'],
+  locales:['en', 'fr', 'ja', 'pt', 'es', 'pl', 'zh-CN'],
   directory: __dirname + '/locales'
 });
 

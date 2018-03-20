@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .container
+    br
+    br
+    h1 Users
+    br
+    table.table    
+      thead
+        tr
+          th(scope='col') Username
+          th(scope='col') Password
+      tbody
+        each key in users
+          tr 
+            td(scope='row') !{key.username}
+            td(scope='row') !{key.password}
+      
+    p.pull-right by 
+      a(href='http://aquaplouf.mooo.com/') Vincent de RIBOU 
+      | VmluY2VudCBkZSBSSUJPVSA8di5kZXJpYm91QGdtYWlsLmNvbT4=

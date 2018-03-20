@@ -30,7 +30,13 @@ html
           a.navbar-brand(href='/') #{__('Blockchain Demo')}
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
+            li(class={active: page === 'setup'})
+              a(href='/setup') #{__('Setup')}
+            li(class={active: page === 'users'})
+              a(href='/users') #{__('Users')}
             li(class={active: page === 'about'})
               a(href='/about') #{__('About')}
-
+            li(class={active: page === 'login'})
+              a(href='/login') #{__('Login')}
+          
     block content
