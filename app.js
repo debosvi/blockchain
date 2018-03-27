@@ -36,6 +36,8 @@ app.use(session({
 
 // mongoose
 mongoose.connect(configDB.url);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use('/', routes);
 

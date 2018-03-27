@@ -8,41 +8,10 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-router.get('/setup', function(req, res) {
-    // create a sample admin user
-    var admin_user = new User({ 
-        username: 'admin', 
-        password: 'admin',
-        admin: true 
-    });
-    
-    // remove all ids
-    admin_user.collection.drop(function(err) {
-        if (err) throw err;
-        console.log('Drop any users successful');
-    });
-    
-    // save the sample user
-    admin_user.save(function(err) {
-        if (err) throw err;
-        console.log('User "admin" saved successfully');
-    });
-    
-    // create a sample admin user
-    var regular_user = new User({ 
-        username: 'user', 
-        password: 'user',
-        admin: false
-    });
-    
-    // save the sample user
-    regular_user.save(function(err) {
-        if (err) throw err;
-        console.log('User "user" saved successfully');
-    });
-    
+router.post('/login', function(req, res) {
+    console.log(req.body);
     res.redirect('/');
-});
+});   
 
 router.get('/users', function(req, res) {
     User.find({}, function(err, users) {

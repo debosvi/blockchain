@@ -34,8 +34,6 @@ html
               a.dropdown-toggle(href='#', data-toggle='dropdown') #{__('Admin')}
                 span.caret
               ul.dropdown-menu(role='menu')
-                li(class={active: page === 'setup'})
-                  a(href='/setup') #{__('Setup')}
                 li(class={active: page === 'users'})
                   a(href='/users') #{__('Users')}
             li(class={active: page === 'about'})
