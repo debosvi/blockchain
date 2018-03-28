@@ -4,5 +4,10 @@
 	"Users": "Utilisateurs",
 	"Setup": "Initialisation",
 	"Login": "Identification",
-	"Admin": "Administration"
+	"Admin": "Administration",
+	"Full Name": "Nom Complet",
+	"User Name": "Utilisateur",
+	"Profile Admin": "Profil Administrateur",
+	"Password": "Mot de Passe",
+	"Logout": "Sortie"
 }

@@ -30,15 +30,20 @@ html
           a.navbar-brand(href='/') #{__('Blockchain Demo')}
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
-            li.dropdown
-              a.dropdown-toggle(href='#', data-toggle='dropdown') #{__('Admin')}
-                span.caret
-              ul.dropdown-menu(role='menu')
-                li(class={active: page === 'users'})
-                  a(href='/users') #{__('Users')}
+            if user
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown') #{__('Admin')}
+                  span.caret
+                ul.dropdown-menu(role='menu')
+                  li(class={active: page === 'users'})
+                    a(href='/users') #{__('Users')}
+            if !user
+              li(class={active: page === 'login'})
+                a(href='/login') #{__('Login')}          
+            if user
+              li(class={active: page === 'logout'})
+                a(href='/logout') #{__('Logout')}          
             li(class={active: page === 'about'})
               a(href='/about') #{__('About')}
-            li(class={active: page === 'login'})
-              a(href='/login') #{__('Login')}          
-              
+                
     block content

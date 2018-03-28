@@ -1,7 +1,13 @@
 {
 	"Blockchain Demo": "Blockchain Demo",
 	"About": "About",
-	"Setup": "Setup",
 	"Users": "Users",
-	"Login": "Login"
+	"Setup": "Setup",
+	"Login": "Login",
+	"Admin": "Admin",
+	"Full Name": "Full Name",
+	"User Name": "User Name",
+	"Profile Admin": "Profile Admin",
+	"Password": "Password",
+	"Logout": "Logout"
 }

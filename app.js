@@ -28,10 +28,12 @@ app.use(i18n.init);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash()); // use connect-flash for flash messages stored in session
 
+/* client session save session using cookie in browser*/
 app.use(session({
-    secret: 'iloveblockchaindebosvi', // session secret
-    resave: true,
-    saveUninitialized: true
+    cookieName: 'blocksession',
+    secret: 'iloveblockchaindebosvi', //private secret key for sessoin data encryption
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000
 }));
 
 // mongoose
@@ -40,13 +42,6 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use('/', routes);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
 
 // error handlers
 
