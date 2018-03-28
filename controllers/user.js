@@ -40,7 +40,6 @@ exports.tryLogin = function(req, res) {
             if (req.body.password, user.password) {
                 credir = req.session.returnTo || '/'
                 req.session.user = user;
-                res.locals.user = user;
                 res.redirect(credir);
             } else {
                 res.render('login', { error: 'Invalid password'} );

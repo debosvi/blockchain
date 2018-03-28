@@ -30,7 +30,7 @@ html
           a.navbar-brand(href='/') #{__('Blockchain Demo')}
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
-            if user
+            if (user && user.admin)
               li.dropdown
                 a.dropdown-toggle(href='#', data-toggle='dropdown') #{__('Admin')}
                   span.caret
@@ -39,10 +39,12 @@ html
                     a(href='/users') #{__('Users')}
             if !user
               li(class={active: page === 'login'})
-                a(href='/login') #{__('Login')}          
+                a(href='/login') #{__('Login')} 
+                
             if user
               li(class={active: page === 'logout'})
-                a(href='/logout') #{__('Logout')}          
+                a(href='/logout') #{__('Logout')}   
+                
             li(class={active: page === 'about'})
               a(href='/about') #{__('About')}
                 

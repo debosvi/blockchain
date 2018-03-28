@@ -30,8 +30,15 @@ router.get('/', function(req, res, next) {
 router.post('/login', UserController.tryLogin);
 
 router.get('/logout', function(req, res) {
-    req.session.destroy();
-    res.redirect('/')    
+    req.session.destroy(function(err){
+        if(err){
+            console.log(err);
+        }
+        else
+        {
+            res.redirect('/');
+        }
+    }); 
 });
 
 router.get('/:page', UserController.requireLogin, function(req, res) {    
